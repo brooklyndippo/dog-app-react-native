@@ -7,13 +7,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <SafeAreaView>
-        <ScrollView>
-          {dogs.map((item, index) => {
-            return (
-                <Text key={index}>{item.breed}</Text>
-            )
-          })}
-        </ScrollView>
+        <FlatList 
+          data={dogs}
+          renderItem={({ item, index }) => <Item title={`${index} ${item.breed}`}  />}
+          keyExtractor={item => item.breed}
+        />
       </SafeAreaView>
       <StatusBar style="auto" />
     </View>
