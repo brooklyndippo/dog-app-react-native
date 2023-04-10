@@ -1,10 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { dogs } from './breeds';
+import Item from './Item';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <SafeAreaView>
+        <ScrollView>
+          {dogs.map((item, index) => {
+            return (
+                <Text key={index}>{item.breed}</Text>
+            )
+          })}
+        </ScrollView>
+      </SafeAreaView>
       <StatusBar style="auto" />
     </View>
   );
