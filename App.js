@@ -11,6 +11,7 @@ export default function App() {
           data={dogs}
           renderItem={({ item, index }) => <Item title={`${index} ${item.breed}`}  />}
           keyExtractor={item => item.breed}
+          contentContainerStyle={styles.listContainer}
         />
       </SafeAreaView>
       <StatusBar style="auto" />
@@ -22,7 +23,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  listContainer: {
+    flexGrow: 1,
+    justifyContent: 'space-between',
+    padding: 20,
   },
 });
