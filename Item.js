@@ -6,10 +6,32 @@ function Item({ breedIndex, breedInfo }) {
 	const renderBreedTraits = () => {
 		const traits = Object.keys(breedInfo).map((key) => {
 		  if (key !== 'breed') {
+
+			let color;
+			switch (breedInfo[key]) {
+			  case 1: 
+				color = '#F57C00'
+				break;
+			  case 2:
+				color = '#FBC02D'
+				break;
+			  case 3:
+				color = '#CDDC39'
+				break;
+			  case 4:
+				color = '#7CB342'
+				break;
+			  case 5:
+				color = '#558B2F'
+				break;
+			};
+
 			return (
 			  <View key={key} style={styles.breedTrait}>
 				<Text>{key}:</Text>
-				<Text>{breedInfo[key]}</Text>
+				<View style={styles.ratingBox}>
+				<View style={{ width: `${breedInfo[key]*20}%`, height: 10, backgroundColor: color }} />
+				</View>
 			  </View>
 			);
 		  }
@@ -61,5 +83,11 @@ const styles = StyleSheet.create({
 	breedTrait: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+		marginTop: 10,
+	},
+	ratingBox: {
+		width: 100,
+		height: 10,
+		backgroundColor: '#F2F3F4'
 	}
 })
