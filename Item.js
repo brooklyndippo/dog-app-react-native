@@ -7,7 +7,7 @@ function Item({ breedIndex, breedInfo }) {
 		const traits = Object.keys(breedInfo).map((key) => {
 		  if (key !== 'breed') {
 			return (
-			  <View key={key} style={{ flexDirection: 'row' }}>
+			  <View key={key} style={styles.breedTrait}>
 				<Text>{key}:</Text>
 				<Text>{breedInfo[key]}</Text>
 			  </View>
@@ -34,4 +34,8 @@ const styles = StyleSheet.create({
     breedName: {
         fontSize: 32,
     },
+	breedTrait: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	}
 })
