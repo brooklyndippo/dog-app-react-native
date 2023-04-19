@@ -34,7 +34,7 @@ function Item({ breedIndex, breedInfo }) {
 
 
 	return (
-		<View key={breedIndex}>
+		<View style={styles.breed} key={breedIndex}>
 			<View style={styles.breedTitle}>
 				<Text style={styles.breedName}>{breedInfo.breed}</Text>
 				{calculateBreedRating()}	
@@ -47,6 +47,9 @@ function Item({ breedIndex, breedInfo }) {
 export default Item;
 
 const styles = StyleSheet.create({
+	breed: {
+		marginTop: 20,
+	},
 	breedTitle: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
