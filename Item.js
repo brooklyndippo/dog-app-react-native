@@ -1,10 +1,29 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 
-function Item({ title }) {
+function Item({ breedIndex, breedInfo }) {
+
+	const renderBreedTraits = () => {
+		const traits = Object.keys(breedInfo).map((key) => {
+		  if (key !== 'breed') {
+			return (
+			  <View key={key} style={{ flexDirection: 'row' }}>
+				<Text>{key}:</Text>
+				<Text>{breedInfo[key]}</Text>
+			  </View>
+			);
+		  }
+		  return null;
+		});
+	
+	  return traits;
+	};	
+
+
 	return (
-		<View>
-			<Text style={styles.title}>{title}</Text>
+		<View key={breedIndex}>
+			<Text style={styles.breedName}>{breedInfo.breed}</Text>
+			{renderBreedTraits()}
 		</View>
 	);
 }
@@ -12,7 +31,7 @@ function Item({ title }) {
 export default Item;
 
 const styles = StyleSheet.create({
-    title: {
+    breedName: {
         fontSize: 32,
     },
 })
