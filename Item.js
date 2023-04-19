@@ -19,10 +19,26 @@ function Item({ breedIndex, breedInfo }) {
 	  return traits;
 	};	
 
+	const calculateBreedRating = () => {
+		const totalTraits = Object.keys(breedInfo).length - 1
+		let overallScore = 0;
+		for (let key in breedInfo) {
+			if (key !== 'breed') {
+				overallScore += breedInfo[key]
+			}
+		}
+		const averageScore = Math.round(overallScore / totalTraits)
+		const breedRating = <Text style={styles.breedName}>{averageScore}</Text>
+		return breedRating
+	}
+
 
 	return (
 		<View key={breedIndex}>
-			<Text style={styles.breedName}>{breedInfo.breed}</Text>
+			<View style={styles.breedTitle}>
+				<Text style={styles.breedName}>{breedInfo.breed}</Text>
+				{calculateBreedRating()}	
+			</View>
 			{renderBreedTraits()}
 		</View>
 	);
@@ -31,9 +47,14 @@ function Item({ breedIndex, breedInfo }) {
 export default Item;
 
 const styles = StyleSheet.create({
-    breedName: {
-        fontSize: 32,
-    },
+	breedTitle: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	},
+	breedName: {
+		fontSize: 32,
+		fontWeight: 'bold',
+	},
 	breedTrait: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
