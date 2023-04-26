@@ -9,7 +9,7 @@ export default function App() {
       <SafeAreaView>
         <FlatList 
           data={dogs}
-          renderItem={({ item, index }) => <Item  breedInfo={item}/>}
+          renderItem={({ item, index }) => <Item  breedIndex={index} breedInfo={item}/>}
           keyExtractor={item => item.breed}
           contentContainerStyle={styles.listContainer}
         />

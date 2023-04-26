@@ -50,8 +50,17 @@ function Item({ breedIndex, breedInfo }) {
 			}
 		}
 		const averageScore = Math.round(overallScore / totalTraits)
-		const breedRating = <Text style={styles.breedName}>{averageScore}</Text>
+		// const breedRating = <Text style={styles.breedName}>{averageScore}</Text>
+		const breedRating = <Text style={styles.breedName}>{starRating(averageScore)}</Text>
 		return breedRating
+	}
+
+	const starRating = (breedRating) => {
+		let stars = ''
+		for (let i = 0; i < breedRating; i++) {
+			stars += '⭐️'
+		}
+		return stars;
 	}
 
 
@@ -70,14 +79,17 @@ export default Item;
 
 const styles = StyleSheet.create({
 	breed: {
-		marginTop: 20,
+		marginTop: 30,
+		borderTopColor: '#F2F3F4',
+		borderTopWidth: 1,
+		paddingTop: 20,
 	},
 	breedTitle: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
+		flexDirection: 'column',
+		alignContent: 'left',
 	},
 	breedName: {
-		fontSize: 32,
+		fontSize: 24,
 		fontWeight: 'bold',
 	},
 	breedTrait: {
